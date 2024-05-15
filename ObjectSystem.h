@@ -8,7 +8,7 @@ namespace gm{ //! nazwa przestrzeni nazw !
 		collider(std::vector<vectorFloat> points);
 		collider(float radius);
 	};
-	collider nullCollider = collider(std::vector<vectorFloat>());
+	static collider nullCollider = collider(std::vector<vectorFloat>());
 
 	class basicObj{
 	private:

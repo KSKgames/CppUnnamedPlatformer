@@ -57,8 +57,7 @@ int main()
 {
     //test
     gm::collider fullCollider = gm::collider({{0,0},{1,0},{1,1},{0,1}});
-    gm::basicObj grass1("grass.png",fullCollider,0,0);
-
+    gm::level level1("level1");
 
 
     //sprawy techniczne
@@ -66,8 +65,8 @@ int main()
     sf::Texture sprite1Texture;
     sf::RenderWindow window(sf::VideoMode(WinSizeX, WinSizeY), "Genialna platformówka");
     sf::Music music1;
-    if(!music1.openFromFile("U.ogg")){std::cout << "nie ma pliku :(";}
-    if(!sprite1Texture.loadFromFile("tymczasowySprite.png")){std::cout << "nie ma pliku :(";}
+    if(!music1.openFromFile("U.ogg"));
+    if(!sprite1Texture.loadFromFile("tymczasowySprite.png"));
 
     music1.play();
     sprite1.setTexture(sprite1Texture);

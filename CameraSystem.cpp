@@ -1,5 +1,5 @@
 #include"CameraSystem.h"
-gm::camera::update(vectorFloat playerPos){
+void gm::camera::update(vectorFloat playerPos){
 	if(moveDir.x == 0){
 		if(position.x + playerMoveLimits.x < playerPos.x + startOffsetFromPlayer.x)
 			moveDir.x = 1;
