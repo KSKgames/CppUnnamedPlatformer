@@ -46,7 +46,7 @@ namespace gm{ //! nazwa przestrzeni nazw !
 
 
 	class OBJECT_LIST{
-		std::unordered_map<std::string,basicObj> objects;
+		//std::unordered_map<std::string,basicObj> objects; //to fix
 	public:
 		void loadObjectsFromFile(std::string filename);
 		void addObject(std::string objectName, basicObj objectData);

@@ -8,16 +8,16 @@ namespace gm{
 	const std::string fileMarking = "LEVELDATA";
 	class level{
 	private:
-		struct ObjRef{ //struktura przechowuje obiekt jako czyste dane, wczytane z pliku i tylko odniesienie do obiektu obiektu
+		struct VirtualObj{ //jest to odniesienie do obiektu
 			vectorInt pos;
 			float rot;
-			basicObj& objRef;
-			std::unordered_map<std::string, int> params; //possibly change to str,int
-			ObjRef(int posX, int posY, float r, basicObj& objectRef, std::unordered_map<std::string, int> parameters);
+			std::unordered_map<std::string, int> params;
+			basicObj& object;										//maybe refactor the format: (or do it in ObjectSystem)
+			VirtualObj(int posX, int posY, float r, basicObj& object, std::unordered_map<std::string, std::string> parameters);
 		};
 	public:
 		vectorInt playerStartPos; 
-		std::vector<ObjRef> objectRefs;
+		std::vector<VirtualObj> objectRefs;
 		level(std::string fileName, OBJECT_LIST OBJECT_LIST); //loadlevelFromFile
 	};
 }

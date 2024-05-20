@@ -31,17 +31,29 @@ gm::level::level(std::string fileName,OBJECT_LIST GameObjects){
 					if(parameters[paramName] == "") swap(parameters[paramName], temp);
 					paramName = "";
 				}
-				if(parameters.count("r") == 0)
-					parameters["r"]="0";
-				//if(!(parameters.count("x") != 1 || parameters.count("y") != 1 || objName == ""))
-					//objectRefs.push_back(ObjRef(parameters["x"], parameters["y"], parameters["r"], GameObjects.getObjectByName(objName),parameters));				
+				
+				//checking if object's definition is valid
+				if (parameters.count("x") != 1 || parameters.count("y") != 1 || objName == "")
+					continue;
+
+				//x,y,r
+				int x = strToInt(parameters["x"]);
+				int y = strToInt(parameters["y"]);
+				float r = 0;
+				if (parameters.count("r") == 1)
+					r = strToFloat(parameters["r"]);
+				parameters.erase("x");
+				parameters.erase("y");
+				parameters.erase("r");
+				
+				//adding the object reference to level list;
+				objectRefs.push_back(VirtualObj(x, y, r, GameObjects.getObjectByName(objName), parameters));
 			}
 		}
 	}
 }
-gm::level::ObjRef::ObjRef(int posX,int posY,float rotation,basicObj& objectRef,std::unordered_map<std::string, int> parameters) :objRef(objectRef){
+gm::level::VirtualObj::VirtualObj(int posX,int posY,float rotation,basicObj& object,std::unordered_map<std::string, std::string> parameters) :object(object){
 	pos.x = posX;
 	pos.y = posY;
 	rot = rotation;
-	params = parameters;
 }

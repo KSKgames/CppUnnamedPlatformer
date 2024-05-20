@@ -2,18 +2,30 @@
 #include<iostream>
 int gm::strToInt(std::string str) {
 	int num = 0, n=1;
-	for (int i = str.length()-1; i>=0; i--) {
+	for (int i = str.length()-1; i>=(str[0]=='-'); i--) {
 		num += (str[i] - 48) * n;
 		n *= 10;
 	}
+	if (str[0] == '-') num *= -1;
 	return num;
 }
 
 float gm::strToFloat(std::string str) {
-	std::string toConvert;
 	bool mode = 0;
-	for (int i = 0; i < str.length(); i++) {
-		if (str[i] == '.') {mode = 1; continue;}
-		toConvert += str[i]; //TO END
+	float n = 1;
+	for(char t:str) {
+		if (mode)
+			n /= 10;
+		else if(t=='.')
+			mode = 1;
 	}
+	float num = 0;
+	for (int i = str.length() - 1; i >=(str[0]=='-');i--) {
+		if (str[i] != '.') {
+			num += (str[i] - 48) * n;
+			n *= 10;
+		}
+	}
+	if (str[0] == '-') num *= -1;
+	return num;
 }

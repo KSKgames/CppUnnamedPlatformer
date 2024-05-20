@@ -38,16 +38,17 @@ void gm::OBJECT_LIST::loadObjectsFromFile(std::string filename){
 void gm::OBJECT_LIST::addObject(std::string objectName,basicObj objectData){
 	//DO IT NEXT: add objectData to objects[objectName]
 }
-/*
 gm::basicObj& gm::OBJECT_LIST::getObjectByName(std::string name){
-	if(objects.count(name) == 1){
+	//DO IT NEXT NEXT:
+	/*if (objects.count(name) == 1) {
 		return objects[name];
 	}
 	else{
-		return objects[name]; //MAKE IT SO IT RETURNS DEFAULT OBJECT
-	}
+		// Return default object
+	}*/
+	basicObj lol("lol"); //to fix
+	return lol;//to fix
 }
-*/
 
 //basicObj getters
 gm::vectorFloat gm::basicObj::getScale(){return scale;}
