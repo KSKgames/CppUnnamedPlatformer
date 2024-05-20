@@ -56,9 +56,11 @@ void physics()
 int main()
 {
     //test
-    gm::collider fullCollider = gm::collider({{0,0},{1,0},{1,1},{0,1}});
-    gm::level level1("level1");
-
+    //gm::collider fullCollider = gm::collider({{0,0},{1,0},{1,1},{0,1}});
+    //gm::level level1("level1");
+    int a = gm::strToInt("100");
+    a += 10;
+    std::cout << a;
 
     //sprawy techniczne
     sf::Sprite sprite1;

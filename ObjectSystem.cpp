@@ -1,4 +1,5 @@
 #include"ObjectSystem.h"
+
 //collider constructors
 //https://stackoverflow.com/questions/14047191/overloading-operators-in-typedef-structs-c
 gm::collider::collider(std::vector<vectorFloat> points) :points(points){};
@@ -22,6 +23,32 @@ gm::basicObj::basicObj(std::string texture, int sx, int sy) :collider(nullCollid
 	scale.x = sx;
 	scale.y = sy;
 }
+//overloading operator= https://stackoverflow.com/questions/12902751/how-to-clone-object-in-c-or-is-there-another-solution
+//to copy https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-copy-constructor
+//why so difficult https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/
+/*
+gm::basicObj& gm::basicObj::operator=(const gm::basicObj& rhs){
+	return *this;
+}
+*/
+
+void gm::OBJECT_LIST::loadObjectsFromFile(std::string filename){
+	//TO BE DONE
+}
+void gm::OBJECT_LIST::addObject(std::string objectName,basicObj objectData){
+	//DO IT NEXT: add objectData to objects[objectName]
+}
+/*
+gm::basicObj& gm::OBJECT_LIST::getObjectByName(std::string name){
+	if(objects.count(name) == 1){
+		return objects[name];
+	}
+	else{
+		return objects[name]; //MAKE IT SO IT RETURNS DEFAULT OBJECT
+	}
+}
+*/
+
 //basicObj getters
 gm::vectorFloat gm::basicObj::getScale(){return scale;}
 std::string gm::basicObj::getTexture(){return texture;}

@@ -1,5 +1,6 @@
 #pragma once
 #include"GameEssentials.h"
+#include<unordered_map>
 
 namespace gm{ //! nazwa przestrzeni nazw !
 	struct collider{
@@ -18,8 +19,10 @@ namespace gm{ //! nazwa przestrzeni nazw !
 		std::string texture;
 		gm::collider& collider;
 	public:
+		//basicObj& operator=(const basicObj& rhs);
+		std::unordered_map<std::string, int> params; //PARAMETERS
 		vectorFloat getScale();
-		vectorInt getRealSize(); //there should 
+		vectorInt getRealSize(); 
 		std::string getTexture();
 		gm::collider& getCollider();
 		virtual void onSpawn();
@@ -29,7 +32,6 @@ namespace gm{ //! nazwa przestrzeni nazw !
 		basicObj(std::string texture, gm::collider& collider, int sx, int sy);
 		basicObj(std::string texture, int sx, int sy);
 	};
-
 	class damageObj : public basicObj {
 	public:
 		int damage;
@@ -40,6 +42,15 @@ namespace gm{ //! nazwa przestrzeni nazw !
 	};
 	class enemyObj : public damageObj{
 		//moving obj 2.0?
+	};
+
+
+	class OBJECT_LIST{
+		//std::unordered_map<std::string,basicObj> objects;
+	public:
+		void loadObjectsFromFile(std::string filename);
+		void addObject(std::string objectName, basicObj objectData);
+		basicObj& getObjectByName(std::string name);
 	};
 }
 
