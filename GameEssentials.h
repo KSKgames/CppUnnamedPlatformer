@@ -3,14 +3,8 @@
 #include<vector>
 
 namespace gm{
-	int strToInt(std::string str){
-		int num = 0, ln = str.length();
-		for(int i = 1; i <= ln; i++){
-			num += (str[ln - i] - 48) * i;
-			i *= 10;
-		}
-		return num;
-	}
+	int strToInt(std::string str);
+	float strToFloat(std::string str);
 	struct vectorInt{
 		int x = 0;
 		int y = 0;

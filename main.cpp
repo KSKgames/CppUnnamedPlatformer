@@ -60,7 +60,7 @@ int main()
     //gm::level level1("level1");
     int a = gm::strToInt("100");
     a += 10;
-    std::cout << a;
+    std::cout <<"Wynik: "<< a << '\n';
 
     //sprawy techniczne
     sf::Sprite sprite1;

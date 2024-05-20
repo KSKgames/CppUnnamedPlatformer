@@ -33,10 +33,8 @@ gm::level::level(std::string fileName,OBJECT_LIST GameObjects){
 				}
 				if(parameters.count("r") == 0)
 					parameters["r"]="0";
-				/*
-				if(!(parameters.count("x") != 1 || parameters.count("y") != 1 || objName == ""))
-					objectRefs.push_back(ObjRef(parameters["x"], parameters["y"], parameters["r"], OBJECT_LIST.getObjectByName(objName)));				
-				*/
+				//if(!(parameters.count("x") != 1 || parameters.count("y") != 1 || objName == ""))
+					//objectRefs.push_back(ObjRef(parameters["x"], parameters["y"], parameters["r"], GameObjects.getObjectByName(objName),parameters));				
 			}
 		}
 	}
