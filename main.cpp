@@ -55,22 +55,19 @@ void physics()
 
 int main()
 {
-    //test
-    //gm::collider fullCollider = gm::collider({{0,0},{1,0},{1,1},{0,1}});
-    //gm::level level1("level1");
+    gm::GameObjectList ObjList;
+    ObjList.AddObj(gm::basicObj("lol", "lolek"));
 
     //sprawy techniczne
     sf::Sprite sprite1;
     sf::Texture sprite1Texture;
     sf::RenderWindow window(sf::VideoMode(WinSizeX, WinSizeY), "Genialna platformówka");
     sf::Music music1;
-    if(!music1.openFromFile("U.ogg"));
-    if(!sprite1Texture.loadFromFile("tymczasowySprite.png"));
+    music1.openFromFile("U.ogg");
+    sprite1Texture.loadFromFile("tymczasowySprite.png");
 
     music1.play();
     sprite1.setTexture(sprite1Texture);
-
-    gm::basicObj trawa();
 
     while(window.isOpen())
     {

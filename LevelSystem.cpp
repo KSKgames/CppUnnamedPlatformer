@@ -4,7 +4,7 @@
 #include<fstream>
 #include<iostream>
 #include<unordered_map>
-gm::level::level(std::string fileName,OBJECT_LIST GameObjects){
+gm::level::level(std::string fileName, gm::GameObjectList& gameObjectList){
 	std::ifstream file(fileName);
 	std::string line;
 	if(std::getline(file, line)){
@@ -45,9 +45,8 @@ gm::level::level(std::string fileName,OBJECT_LIST GameObjects){
 				parameters.erase("x");
 				parameters.erase("y");
 				parameters.erase("r");
-				
-				//adding the object reference to level list;
-				objectRefs.push_back(VirtualObj(x, y, r, GameObjects.getObjectByName(objName), parameters));
+
+				objectRefs.push_back(VirtualObj(x, y, r, gameObjectList.GetObjByName(objName), parameters));
 			}
 		}
 	}

@@ -18,6 +18,6 @@ namespace gm{
 	public:
 		vectorInt playerStartPos; 
 		std::vector<VirtualObj> objectRefs;
-		level(std::string fileName, OBJECT_LIST OBJECT_LIST); //loadlevelFromFile
+		level(std::string fileName,GameObjectList&); //loadlevelFromFile
 	};
 }
