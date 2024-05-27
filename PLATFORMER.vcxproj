@@ -138,6 +138,7 @@
     <ClCompile Include="ObjectBehaviour.cpp" />
     <ClCompile Include="ObjectSystem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraSystem.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="LevelSystem.h" />
     <ClInclude Include="ObjectSystem.h" />
     <ClInclude Include="level1" />
+    <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

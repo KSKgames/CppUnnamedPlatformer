@@ -6,8 +6,8 @@
 #include<chrono>
 #include"LevelSystem.h"
 #include"ObjectSystem.h"
+#include"Renderer.h"
 
-//https://stackoverflow.com/questions/61225576/how-to-seperate-unit-testing-from-main-program-in-c
 const float TimeStep = 5.0;
 const int WinSizeX = 1280;
 const int WinSizeY = 720;
@@ -55,8 +55,7 @@ void physics()
 
 int main()
 {
-    gm::GameObjectList ObjList;
-    ObjList.AddObj(gm::basicObj("lol", "lolek"));
+    
 
     //sprawy techniczne
     sf::Sprite sprite1;
@@ -76,20 +75,21 @@ int main()
         {
             music1.setPlayingOffset(sf::seconds(8.f));
         }
-
+        
+        /*
         physics();
         //sterowanie
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             hero.velocityOnX = -1;
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             hero.velocityOnX = 1;
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         {
-            if(onFloor(hero.spriteX, hero.spriteY)) 
+            if (onFloor(hero.spriteX, hero.spriteY))
             {
                 hero.velocityOnY = -4;
             }
@@ -98,10 +98,11 @@ int main()
         //aktualizowanie pozycji
         hero.spriteX = hero.spriteX + TimeStep * hero.velocityOnX;
         hero.spriteY = hero.spriteY + TimeStep * hero.velocityOnY;
-        sprite1.setPosition(sf::Vector2f(hero.spriteX, hero.spriteY));
+        sprite1.setPosition(sf::Vector2f(hero.spriteX, hero.spriteY)); 
+        */
 
-        //zamykanie okienka (eventy)
-        sf::Event event;
+        
+        sf::Event event;//zamykanie okienka (eventy)
         while(window.pollEvent(event))
         {
             switch(event.type) {
@@ -110,8 +111,7 @@ int main()
                 break;
             }
         }
-
-        //rysowanie (docelowo moze tablica sprite'ow i petla rysujaca)
+        
         window.clear();
         window.draw(sprite1);
         window.display();

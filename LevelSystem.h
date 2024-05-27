@@ -7,17 +7,10 @@
 namespace gm{
 	const std::string fileMarking = "LEVELDATA";
 	class level{
-	private:
-		struct VirtualObj{ //jest to odniesienie do obiektu
-			vectorInt pos;
-			float rot;
-			std::unordered_map<std::string, int> params;
-			basicObj& object;										//maybe refactor the format: (or do it in ObjectSystem)
-			VirtualObj(int posX, int posY, float r, basicObj& object, std::unordered_map<std::string, std::string> parameters);
-		};
 	public:
-		vectorInt playerStartPos; 
-		std::vector<VirtualObj> objectRefs;
-		level(std::string fileName,GameObjectList&); //loadlevelFromFile
+		camera cam;
+		vectorInt playerStartPos; //maybe change to an object
+		ObjList objects;
+		level(std::string fileName, ObjList GameObjects,camera cam); //loadlevelFromFile
 	};
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include"GameEssentials.h"
-#include<unordered_map>
+#include<map>
 
 namespace gm{
 	struct collider{
@@ -9,19 +9,23 @@ namespace gm{
 		collider(std::vector<vectorFloat> points);
 		collider(float radius);
 	};
+
 	class basicObj{
 	private:
-		vectorInt pos = {0,0};
+		vectorInt pos = {0,0};float r = 0;
 		vectorFloat scale = {1.0,1.0};
-		vectorInt realSize; //set it after loading texture to memory (will have to make texture loading system first)
 		std::string texture;
 		gm::collider& collider;
+		vectorInt realSize; //CHANGE ON RESIZE AND RETEXTURE - set it after loading texture to memory (will have to make texture loading system first)
+		//rectInt realBounds; //CHANGE ON REROTATE (returns the bounds of the object for camera, based or real size and rotation)
+		std::map<std::string, std::string> otherParams;
 	public:
 		//basicObj& operator=(const basicObj& rhs);
+		void instantiate(std::map<std::string,std::string> params);
 		std::string name;
-		std::unordered_map<std::string, int> params; //PARAMETERS
-		vectorFloat getScale();
-		vectorInt getRealSize(); 
+		vectorFloat getScale(); 
+		//rectInt getRealBoundaries(); //^^^
+		vectorInt getRealSize(); //^^^
 		std::string getTexture();
 		gm::collider& getCollider();
 		virtual void onSpawn();
@@ -45,14 +49,15 @@ namespace gm{
 
 	static collider nullCollider = collider(std::vector<vectorFloat>());
 
-	class GameObjectList {
+	class ObjList {
 	private:
 		std::vector<basicObj> objects;
 	public:
-		void LoadFromFile(std::string filename);
-		void Add(basicObj obj);
-		basicObj& GetObjByName(std::string name);
-		GameObjectList();
+		void loadFromFile(std::string filename);
+		void add(basicObj obj);
+		int idByName(std::string name);
+		int size();
+		basicObj& getObject(int id);
 	};
 }
 

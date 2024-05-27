@@ -1,5 +1,6 @@
 #pragma once
 #include"GameEssentials.h"
+#include"LevelSystem.h"
 namespace gm{
 	class camera{
 	private:

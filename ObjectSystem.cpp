@@ -27,28 +27,46 @@ gm::basicObj::basicObj(std::string name, std::string texture, int sx, int sy) :c
 	scale.x = sx;
 	scale.y = sy;
 }
-
-gm::GameObjectList::GameObjectList() {
-	objects.push_back(basicObj("null", "null"));
+//basicObj
+gm::vectorFloat gm::basicObj::getScale() { return scale; }
+std::string gm::basicObj::getTexture() { return texture; }
+gm::collider& gm::basicObj::getCollider() { return collider; }
+gm::vectorInt gm::basicObj::getRealSize() { return realSize; }
+void gm::basicObj::instantiate(std::map<std::string, std::string> params) {
+	for (std::pair<std::string, std::string> pair : params) {
+		if (pair.first == "x") this->pos.x = strToInt(pair.second);
+		else if (pair.first == "y") this->pos.y = strToInt(pair.second);
+		else if (pair.first == "r") this->r = strToFloat(pair.second);
+		else if (pair.first == "sx") this->scale.x = strToFloat(pair.second);
+		else if (pair.first == "sy") this->scale.y = strToFloat(pair.second);
+		else otherParams.insert(pair);
+	};
 }
 
-void LoadFromFile(std::string filename) {
-	//TO BE DONE
+
+//other basicObj methods are in ObjectBehaviur.cpp
+
+//ObjList
+void gm::ObjList::loadFromFile(std::string filename) {
+	objects.push_back(gm::basicObj("null", "null"));
 }
 
-void gm::GameObjectList::Add(basicObj obj) {
+void gm::ObjList::add(basicObj obj) {
 	objects.push_back(obj);
 }
-gm::basicObj& gm::GameObjectList::GetObjByName(std::string name) {
-	for (basicObj& obj : objects)
-		if (obj.name == name) return obj;
 
-	return objects[0]; //return default
+int gm::ObjList::size() {
+	return objects.size();
 }
 
-//basicObj getters
-gm::vectorFloat gm::basicObj::getScale(){return scale;}
-std::string gm::basicObj::getTexture(){return texture;}
-gm::collider& gm::basicObj::getCollider(){return collider;}
-gm::vectorInt gm::basicObj::getRealSize(){ return realSize;}
-//basicObj methods are in ObjectBehaviur.cpp
+int gm::ObjList::idByName(std::string name){
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i].name == name) return i;
+		return -1;
+	}
+}
+gm::basicObj& gm::ObjList::getObject(int id) {
+	return objects[id];
+}
+
+
